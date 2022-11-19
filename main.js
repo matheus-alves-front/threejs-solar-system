@@ -161,9 +161,9 @@ window.addEventListener('resize', () =>
  * CONTROLS
  * -----------
 */
-const controls = new OrbitControls(camera, canvas)
-controls.enableDamping = true
-controls.enabled = false
+// const controls = new OrbitControls(camera, canvas)
+// controls.enableDamping = true
+// controls.enabled = false
 
 /**
  * RENDERER
