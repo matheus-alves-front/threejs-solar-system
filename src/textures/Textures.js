@@ -36,6 +36,13 @@ EarthTexture.minFilter = THREE.NearestMipMapNearestFilter
 EarthTexture.magFilter = THREE.NearestFilter 
 EarthTexture.generateMipmaps = false
 
+export const EarthAlphaTexture = textureLoader.load('/textures/Earth-new-texture.jpg')
+EarthAlphaTexture.wrapS = THREE.RepeatWrapping
+EarthAlphaTexture.wrapT = THREE.RepeatWrapping
+EarthAlphaTexture.minFilter = THREE.NearestMipMapNearestFilter
+EarthAlphaTexture.magFilter = THREE.NearestFilter 
+EarthAlphaTexture.generateMipmaps = false
+
 export const EarthMoonTexture = textureLoader.load('/textures/Earth-moon-texture.jpg')
 EarthMoonTexture.wrapS = THREE.RepeatWrapping
 EarthMoonTexture.wrapT = THREE.RepeatWrapping

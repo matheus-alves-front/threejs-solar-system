@@ -163,7 +163,7 @@ window.addEventListener('resize', () =>
 */
 const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
-// controls.enabled = false
+controls.enabled = false
 
 /**
  * RENDERER
@@ -191,22 +191,23 @@ const animation = () =>
     SunMesh.rotation.y = elapsedTime * .1
 
     // Update controls
-    controls.update()
+    // controls.update()
 
     // // Camera Look At
-    camera.lookAt(SaturnMesh.position)
-
-    // camera.position.z = SaturnMesh.position.z
-
-    // if (CameraLookAtClick === SunMesh) {
-    //   camera.position.x = SunMesh.position.x
-    //   camera.position.y = SunMesh.position.y
-    //   camera.position.z = SunMesh.position.z - 25
-    // } else if (CameraLookAtClick === EarthMesh) {
-    //   camera.position.x = EarthMesh.position.x
-    //   camera.position.y = EarthMesh.position.y
-    //   camera.position.z = EarthMesh.position.z - 10
-    // }
+    camera.lookAt(CameraLookAtClick.position)
+    if (CameraLookAtClick === SunMesh) {
+      camera.position.x = CameraLookAtClick.position.x
+      camera.position.y = CameraLookAtClick.position.y
+      camera.position.z = CameraLookAtClick.position.z - 25
+    } else if (CameraLookAtClick === JupiterMesh || CameraLookAtClick === SaturnMesh || CameraLookAtClick === UranusMesh || CameraLookAtClick === NeptuneMesh) {
+      camera.position.x = CameraLookAtClick.position.x + (-Math.sin(elapsedTime * .3) * 15)
+      camera.position.y = CameraLookAtClick.position.y + 5
+      camera.position.z = CameraLookAtClick.position.z + (-Math.cos(elapsedTime * .3) * 15)
+    } else {
+      camera.position.x = CameraLookAtClick.position.x + (-Math.sin(elapsedTime * .3) * 10)
+      camera.position.y = CameraLookAtClick.position.y + 5
+      camera.position.z = CameraLookAtClick.position.z + (-Math.cos(elapsedTime * .3) * 10)
+    }
 
     // Render
     renderer.render(scene, camera)

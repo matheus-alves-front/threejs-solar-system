@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import {
-    EarthTexture,
+    EarthAlphaTexture,
     EarthMoonTexture
   } from '../textures/Textures'
 
@@ -12,7 +12,7 @@ export const EarthMesh = new THREE.Mesh(
 EarthMesh.position.y = 1
 EarthMesh.position.z = 3
 EarthMesh.rotation.x = -.2
-EarthMaterial.map = EarthTexture
+EarthMaterial.map = EarthAlphaTexture
 
 export const EarthMoonMaterial = new THREE.MeshStandardMaterial()
 export const EarthMoonMesh = new THREE.Mesh(
@@ -35,7 +35,7 @@ export const animationEarth = () =>
     EarthMoonMesh.position.x = EarthMesh.position.x + (Math.sin(elapsedTime * .8) * 5)
     EarthMoonMesh.position.z = EarthMesh.position.z + (Math.cos(elapsedTime * .8) * 5)
     EarthMoonMesh.position.y = EarthMesh.position.y + (Math.cos(elapsedTime * .8) * 2)
-    EarthMoonMesh.rotation.y = elapsedTime * - .8
+    // EarthMoonMesh.rotation.y = elapsedTime * - .8
 
     // Call animation again on the next frame
     window.requestAnimationFrame(animationEarth)
