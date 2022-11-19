@@ -183,10 +183,13 @@ renderer.render(scene, camera)
  * -----------
 */
 const clock = new THREE.Clock()
+let previousTime = 0
 
 const animation = () =>
 {
     const elapsedTime = clock.getElapsedTime()
+    const deltaTime = elapsedTime - previousTime
+    previousTime = elapsedTime
 
     SunMesh.rotation.y = elapsedTime * .1
 
@@ -200,13 +203,13 @@ const animation = () =>
       camera.position.y = CameraLookAtClick.position.y
       camera.position.z = CameraLookAtClick.position.z - 25
     } else if (CameraLookAtClick === JupiterMesh || CameraLookAtClick === SaturnMesh || CameraLookAtClick === UranusMesh || CameraLookAtClick === NeptuneMesh) {
-      camera.position.x = CameraLookAtClick.position.x + (-Math.sin(elapsedTime * .3) * 15)
+      camera.position.x = CameraLookAtClick.position.x + (-Math.sin(deltaTime * .3) * 15)
       camera.position.y = CameraLookAtClick.position.y + 5
-      camera.position.z = CameraLookAtClick.position.z + (-Math.cos(elapsedTime * .3) * 15)
+      camera.position.z = CameraLookAtClick.position.z + (-Math.cos(deltaTime * .3) * 15)
     } else {
-      camera.position.x = CameraLookAtClick.position.x + (-Math.sin(elapsedTime * .3) * 10)
+      camera.position.x = CameraLookAtClick.position.x + (-Math.sin(deltaTime * .3) * 10)
       camera.position.y = CameraLookAtClick.position.y + 5
-      camera.position.z = CameraLookAtClick.position.z + (-Math.cos(elapsedTime * .3) * 10)
+      camera.position.z = CameraLookAtClick.position.z + (-Math.cos(deltaTime * .3) * 10)
     }
 
     // Render
