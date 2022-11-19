@@ -4,4 +4,6 @@ import * as THREE from 'three'
 export const pointLight = new THREE.PointLight('#FFFFFF', 2, 0)
 export const pointLightHelper = new THREE.PointLightHelper(pointLight, .5)
 
+export const ambientLight = new THREE.AmbientLight('#FFFFFF', .5)
+
 pointLight.position.set(0,2,0)

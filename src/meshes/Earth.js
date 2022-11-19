@@ -1,6 +1,5 @@
 import * as THREE from 'three'
 import {
-    GalaxyFloorTexture,
     EarthTexture,
     EarthMoonTexture
   } from '../textures/Textures'
@@ -30,8 +29,8 @@ export const animationEarth = () =>
     
     // 
     EarthMesh.rotation.y = elapsedTime * .5
-    EarthMesh.position.x = Math.sin(elapsedTime * .1) * 50
-    EarthMesh.position.z = Math.cos(elapsedTime * .1) * 50
+    EarthMesh.position.x = Math.sin(elapsedTime * .2) * 60
+    EarthMesh.position.z = Math.cos(elapsedTime * .2) * 60
 
     EarthMoonMesh.position.x = EarthMesh.position.x + (Math.sin(elapsedTime * .8) * 5)
     EarthMoonMesh.position.z = EarthMesh.position.z + (Math.cos(elapsedTime * .8) * 5)

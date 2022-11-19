@@ -3,22 +3,63 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'lil-gui'
 // Import Components
-import { 
-  EarthMesh, 
-  EarthMoonMesh,
-  animationEarth
-} from './src/meshes/Earth'
 import {
   SunMesh,
   SunRectAreaLight1,
   SunRectAreaLight2
 } from './src/meshes/Sun'
+import { 
+  MercuryMesh, 
+  animationMercury
+} from './src/meshes/Mercury'
+import { 
+  VenusMesh, 
+  animationVenus
+} from './src/meshes/Venus'
+import { 
+  EarthMesh, 
+  EarthMoonMesh,
+  animationEarth
+} from './src/meshes/Earth'
+import { 
+  MarsMesh, 
+  MarsMoon1Mesh,
+  MarsMoon2Mesh,
+  animationMars
+} from './src/meshes/Mars'
+import { 
+  JupiterMesh, 
+  JupiterMoon1Mesh,
+  JupiterMoon2Mesh,
+  animationJupiter
+} from './src/meshes/Jupiter'
+import { 
+  SaturnMesh,
+  SaturnRingMesh,
+  animationSaturn
+} from './src/meshes/Saturn'
+
+import { 
+  UranusMesh, 
+  UranusMoon1Mesh,
+  UranusMoon2Mesh,
+  animationUranus
+} from './src/meshes/Uranus'
+
+import { 
+  NeptuneMesh, 
+  NeptuneMoon1Mesh,
+  NeptuneMoon2Mesh,
+  animationNeptune
+} from './src/meshes/Neptune'
+
 // import Textures 
 import {
   ParticlesStars,
 } from './src/meshes/Stars'
 // import Lights
 import {
+  ambientLight,
   pointLight,
   pointLightHelper
 } from './src/lights/PointLightsGalaxy'
@@ -39,17 +80,53 @@ const canvas = document.querySelector('canvas#app')
  */
 const scene = new THREE.Scene()
 // Scene Adds
-scene.add(pointLight, pointLightHelper)
+scene.add(
+  ambientLight,
+  pointLight, 
+  pointLightHelper
+)
 scene.add(
   ParticlesStars,
-  EarthMesh, 
-  EarthMoonMesh,
   SunMesh
 )
 scene.add(
   SunRectAreaLight1, 
   SunRectAreaLight2
 )
+scene.add(
+  MercuryMesh,
+  VenusMesh
+)
+scene.add(
+  EarthMesh, 
+  EarthMoonMesh
+)
+scene.add(
+  MarsMesh,
+  MarsMoon1Mesh,
+  MarsMoon2Mesh
+)
+scene.add(
+  JupiterMesh,
+  JupiterMoon1Mesh,
+  JupiterMoon2Mesh
+)
+scene.add(
+  SaturnMesh,
+  SaturnRingMesh
+)
+scene.add(
+  UranusMesh,
+  UranusMoon1Mesh,
+  UranusMoon2Mesh
+)
+scene.add(
+  NeptuneMesh, 
+  NeptuneMoon1Mesh,
+  NeptuneMoon2Mesh,
+)
+
+
 
 /**
  * CAMERA
@@ -116,12 +193,18 @@ const animation = () =>
     // Update controls
     controls.update()
 
-    // Camera Look At
-    camera.lookAt(CameraLookAtClick.position)
+    // // Camera Look At
+    camera.lookAt(SaturnMesh.position)
+
+    // camera.position.z = SaturnMesh.position.z
 
     // if (CameraLookAtClick === SunMesh) {
+    //   camera.position.x = SunMesh.position.x
+    //   camera.position.y = SunMesh.position.y
     //   camera.position.z = SunMesh.position.z - 25
     // } else if (CameraLookAtClick === EarthMesh) {
+    //   camera.position.x = EarthMesh.position.x
+    //   camera.position.y = EarthMesh.position.y
     //   camera.position.z = EarthMesh.position.z - 10
     // }
 
@@ -134,3 +217,10 @@ const animation = () =>
 
 animation()
 animationEarth()
+animationMercury()
+animationVenus()
+animationMars()
+animationJupiter()
+animationSaturn()
+animationUranus()
+animationNeptune()

@@ -5,11 +5,11 @@ import * as THREE from 'three'
 */
 // Geometry
 const particlesGeometry = new THREE.BufferGeometry()
-const count = 50000
+const count = 7000
 const positions = new Float32Array(count * 3)
 const colors = new Float32Array(count * 3)
 for (let i = 0; i < count; i++) {
-   positions[i] = (Math.random() - .5) * 200
+   positions[i] = (Math.random() - .5) * 500
    colors[i] = Math.random()
 }
 particlesGeometry.setAttribute(
